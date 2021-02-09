@@ -39,13 +39,13 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    public User updateUserById(User user, Long id) {
+    public User updateUserById(UserDto userDto, Long id) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found with id: " + id));
-        existingUser.setFirstName(user.getFirstName());
-        existingUser.setSecondName(user.getSecondName());
-        existingUser.setAge(user.getAge());
-        existingUser.setEmail(user.getEmail());
+        existingUser.setFirstName(userDto.getFirstName());
+        existingUser.setSecondName(userDto.getSecondName());
+        existingUser.setAge(userDto.getAge());
+        existingUser.setEmail(userDto.getEmail());
         return userRepository.save(existingUser);
     }
 }
